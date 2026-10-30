@@ -1,1 +1,5 @@
+# Python Budggeting App
+
 An app created in Python, in which the user can log spending and earnings. Can visualize spending habits and earnings over time.
+
+## Features
