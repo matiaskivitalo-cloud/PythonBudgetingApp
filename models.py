@@ -3,16 +3,17 @@
 class Transaction:
     """Class representing a financial transaction."""
 
-    def __init__(self, amount, date, description):
+    def __init__(self, amount, date, description, id=None, category=None):
+        self.id = id
         self.amount = amount
         self.type = "income" if amount >= 0 else "expense"
         self.date = date
         self.description = description
-        self.category = None  # Optional category for the transaction
+        self.category = category  # Optional category for the transaction
 
 
     def __str__(self):
-        return f"Transaction(type={self.type}, amount={self.amount}, date={self.date}, description='{self.description}', category={self.category})"
+        return f"Transaction(id={self.id}, type={self.type}, amount={self.amount}, date={self.date}, description='{self.description}', category={self.category})"
 
     def set_category(self, category):
         """Set the category for the transaction."""
