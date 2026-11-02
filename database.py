@@ -34,19 +34,21 @@ def add_transaction(transaction):
 
 def get_all_transactions():
     """Retrieve all transactions from the database."""
+
     connection = sqlite3.connect("budgeting_app.db")
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM transactions")
     transactions = cursor.fetchall()
     connection.close()
-    transaction_objects = []
+
+    transaction_objects_dict = {}
     for transaction in transactions:
         transaction_obj = Transaction(
-            id=transaction[0],
             amount=transaction[1],
             date=transaction[3],
             description=transaction[4],
+            id=transaction[0],
             category=transaction[5]
         )
-        transaction_objects.append(transaction_obj)
-    return transaction_objects
+        transaction_objects_dict[transaction[0]] = transaction_obj
+    return transaction_objects_dict
